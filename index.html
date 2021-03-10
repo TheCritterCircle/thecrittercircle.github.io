@@ -8,6 +8,19 @@
         <title>TCC: Minigame Collective</title>
     </head>
     <body>
+        <header>
+            <div class="navbar">
+                <div class="container justify-content-end">
+                    <div class="form-check form-switch">
+                        <div class="input-group">
+                            <span class="me-2"><i class="bi-brightness-high"></i></span>
+                            <input class="form-check-input rounded-pill" type="checkbox" id="darkModeSwitch"></input>
+                            <span class="ms-2"><i class="bi-moon-fill"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <main>
             <section class="pb-5 text-center container">
                 <div class="pt-lg-2 pb-lg-3">
@@ -167,6 +180,31 @@
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('#darkModeSwitch').prop('checked', true);
+                toggleDarkMode();
+            } else {
+                $('#darkModeSwitch').prop('checked', false);
+            }
+            $('#darkModeSwitch').on('click', function() {
+                toggleDarkMode();
+            });
+            function toggleDarkMode() {
+                if ($('#darkModeSwitch').is(':checked')) {
+                    $('body').addClass('bg-dark text-white')
+                    $('.album').addClass('bg-dark text-white').removeClass('bg-light')
+                    $('.card').addClass('bg-secondary')
+                    $('.btn-outline-secondary').addClass('btn-light').removeClass('.btn-outline-secondary')
+                } else {
+                    $('body').removeClass('bg-dark text-white')
+                    $('.album').removeClass('bg-dark text-white').addClass('bg-light')
+                    $('.card').removeClass('bg-secondary')
+                    $('.btn-light').addClass('.btn-outline-secondary').removeClass('btn-light')
+                }
+            }
+        </script>
     </body>
 </html>
 
